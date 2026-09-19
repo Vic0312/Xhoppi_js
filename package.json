@@ -1,0 +1,28 @@
+{
+  "name": "xhoppi_js",
+  "version": "1.0.0",
+  "description": "Xhoppi com javascript",
+  "homepage": "https://github.com/Vic0312/Xhoppi_js#readme",
+  "bugs": {
+    "url": "https://github.com/Vic0312/Xhoppi_js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vic0312/Xhoppi_js.git"
+  },
+  "license": "ISC",
+  "author": "Maria Vitoria e Jose Ricardo",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "N/A",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "fs": "^0.0.1-security",
+    "helmet": "^8.3.0",
+    "morgan": "^1.12.1"
+  }
+}
