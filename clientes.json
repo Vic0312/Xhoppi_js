@@ -1,0 +1,32 @@
+[
+  {
+    "cpf": "33333333333",
+    "nome": "Luzia",
+    "sobrenome": "Alvez",
+    "dataNasc": "1990-05-07",
+    "telefone": "18992222222",
+    "email": "luzia@gmail.com",
+    "senha": "1234",
+    "foto_perfil": "fundo.jpg"
+  },
+  {
+    "cpf": "33333333333",
+    "nome": "Mary",
+    "sobrenome": "Voncher",
+    "dataNasc": "1987-04-23",
+    "telefone": "1899764343543",
+    "email": "Mary@gmail.com",
+    "senha": "12345",
+    "foto_perfil": "1789956400288-800231922.png"
+  },
+  {
+    "cpf": "11122211122",
+    "nome": "Mariana",
+    "sobrenome": "trevor",
+    "dataNasc": "1996-06-04",
+    "telefone": "18996787828",
+    "email": "mariana@gmail.com",
+    "senha": "12345",
+    "foto_perfil": "1789957151436-433805778.png"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id_prod": 1,
+    "nome": "Perfume Egeo",
+    "fabricante": "Oboticario",
+    "descricao": "Perfume Frutado",
+    "valor": "105.00",
+    "quantidade": 100,
+    "foto_prod": "perfumeEgeo.jfif"
+  },
+  {
+    "id_prod": 2,
+    "nome": "Perfume arabe",
+    "fabricante": "Arábe",
+    "descricao": "Sei não - arabe",
+    "valor": "500.00",
+    "quantidade": 200,
+    "foto_prod": "perfume_arabe.webp"
+  },
+  {
+    "id_prod": 3,
+    "nome": "Ner Tamid",
+    "fabricante": "Não sei",
+    "descricao": "Sei la",
+    "valor": "115.00",
+    "quantidade": 150,
+    "foto_prod": "nertamid.jpeg"
+  },
+  {
+    "id_prod": 4,
+    "nome": "Pulseira",
+    "fabricante": "Pandora",
+    "descricao": "Pulseira da pandora com berlocs",
+    "valor": "200",
+    "quantidade": 23,
+    "foto_prod": "1789956821265-880806568.jpg"
+  }
+]

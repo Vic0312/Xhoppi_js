@@ -1,0 +1,14 @@
+[
+  {
+    "cpf": "55555555555",
+    "nome": "Elizabeti",
+    "sobrenome": "Gonçalves",
+    "dataNasc": "1980-06-18",
+    "telefone": "18995234567",
+    "cargo": "Diretora",
+    "salario": "8224.00",
+    "email": "elizabeth@gmail.com",
+    "senha": "12345",
+    "foto_perfil": "fundo.jpg"
+  }
+]
