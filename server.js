@@ -13,12 +13,10 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = 3000;
 
-// Configuração do Multer com destinos separados para Cliente, Funcionário e Produto
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         let pastaDestino = path.join(__dirname, 'assets', 'img');
 
-        // Define a pasta correta com base no endpoint/rota acessada
         if (req.originalUrl.includes('/cliente')) {
             pastaDestino = path.join(__dirname, 'assets', 'imgcliente');
         } else if (req.originalUrl.includes('/funcionario')) {
@@ -27,7 +25,6 @@ const storage = multer.diskStorage({
             pastaDestino = path.join(__dirname, 'assets', 'imgprod');
         }
 
-        // Garante a criação automática do diretório caso ainda não exista
         if (!fs.existsSync(pastaDestino)) {
             fs.mkdirSync(pastaDestino, { recursive: true });
         }
@@ -42,14 +39,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Middlewares Globais
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Servir arquivos estáticos (CSS, imagens, fontes) da pasta 'assets'
 app.use(express.static(path.join(__dirname, 'assets')));
 
-// Rate Limiting (Controle de Limite de Requisições)
 const limiter = rateLimit({
     windowMs: 10 * 60 * 1000,
     max: 100,
@@ -57,18 +51,15 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// Registro de Logs no arquivo 'acess.log'
 const logFile = fs.createWriteStream(path.join(__dirname, 'acess.log'), { flags: 'a' });
 app.use(morgan('combined', { stream: logFile }));
 
-// Segurança do Cabeçalho HTTP
 app.use(
     helmet({
         contentSecurityPolicy: false
     })
 );
 
-// Auxiliares para Manipulação dos Arquivos JSON
 const lerJson = (caminho) => {
     if (!fs.existsSync(caminho)) {
         fs.writeFileSync(caminho, JSON.stringify([]));
@@ -82,14 +73,11 @@ const escreverJson = (caminho, dados) => {
     fs.writeFileSync(caminho, JSON.stringify(dados, null, 2), 'utf-8');
 };
 
-// Caminhos dos arquivos de dados em JSON
 const clientesPath = path.join(__dirname, 'clientes.json');
 const funcionariosPath = path.join(__dirname, 'funcionarios.json');
 const produtosPath = path.join(__dirname, 'produtos.json');
 
-// --- ROTAS DE NAVEGAÇÃO (GET) ---
 
-// Tela de Login
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
@@ -98,12 +86,51 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
 
-// Home
 app.get('/home', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'home.html'));
+    const homeHtmlPath = path.join(__dirname, 'views', 'home.html');
+    let html = fs.readFileSync(homeHtmlPath, 'utf-8');
+
+    const produtos = lerJson(produtosPath);
+
+    const produtosEmbaralhados = [...produtos].sort(() => 0.5 - Math.random());
+
+    const produtosExibicao = produtosEmbaralhados.slice(0, 10);
+
+    let produtosCardsHtml = '';
+
+    if (produtosExibicao.length === 0) {
+        produtosCardsHtml = '<p style="padding: 20px; font-weight: bold;">Nenhum produto cadastrado no momento.</p>';
+    } else {
+        produtosCardsHtml = produtosExibicao.map((p) => {
+            const valorFormatado = parseFloat(p.valor).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+
+            return `
+                <a href="#" class="produto-item-grid">
+                    <section>
+                        <img src="/imgprod/${p.foto_prod}" alt="${p.nome}">
+                        <p>${p.nome}</p>
+                        <section class="produto-item-info">
+                            <p id="valor">${valorFormatado}</p>
+                            <p id="disponiveis">${p.quantidade} disponíveis</p>
+                        </section>
+                    </section>
+                </a>
+            `;
+        }).join('');
+    }
+
+    const regExpSubstituicao = /<section class="conteudo-home-descobertas-produto">[\s\S]*?<\/section>\s*<\/section>/;
+    const novoBlocoDescobertas = `<section class="conteudo-home-descobertas-produto">\n${produtosCardsHtml}\n            </section>\n        </section>`;
+
+    html = html.replace(regExpSubstituicao, novoBlocoDescobertas);
+
+    res.send(html);
 });
 
-// Telas de Cadastro
+
 app.get('/clientes/cadastrar', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'cadastrar-cliente.html'));
 });
@@ -116,20 +143,17 @@ app.get('/produto/cadastrar', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'cadastrar-produto.html'));
 });
 
-// Visualizar dados cadastrados (Retorno JSON)
+
 app.get('/clientes', (req, res) => {
     const clientes = lerJson(clientesPath);
     res.json(clientes);
 });
 
-// --- ROTAS DE PROCESSAMENTO (POST) ---
 
-// Validação de Login exclusivo de Funcionários
 app.post('/login', (req, res) => {
     const { user, senha } = req.body;
     const funcionarios = lerJson(funcionariosPath);
 
-    // Procura funcionário cadastrado conferindo Email ou CPF
     const funcionarioEncontrado = funcionarios.find(
         (f) => (f.email === user || f.cpf === user) && f.senha === senha
     );
@@ -141,7 +165,6 @@ app.post('/login', (req, res) => {
     }
 });
 
-// Cadastro de Cliente (Salva a foto em /assets/imgcliente)
 app.post('/clientes', upload.single('inputFoto'), (req, res) => {
     const { nome, sobrenome, cpf, dataNascimento, telefone, email, senha } = req.body;
     const clientes = lerJson(clientesPath);
@@ -163,7 +186,6 @@ app.post('/clientes', upload.single('inputFoto'), (req, res) => {
     res.redirect('/home');
 });
 
-// Cadastro de Funcionário (Salva a foto em /assets/imgfunc)
 app.post('/funcionario/cadastrar', upload.single('inputFoto'), (req, res) => {
     const {
         inputNomeFunc,
@@ -198,7 +220,6 @@ app.post('/funcionario/cadastrar', upload.single('inputFoto'), (req, res) => {
     res.redirect('/home');
 });
 
-// Cadastro de Produto (Salva a foto em /assets/imgprod)
 app.post('/produto/cadastrar', upload.single('inputFoto'), (req, res) => {
     const {
         inputNomeProd,
@@ -210,7 +231,6 @@ app.post('/produto/cadastrar', upload.single('inputFoto'), (req, res) => {
 
     const produtos = lerJson(produtosPath);
 
-    // Geração do ID incremental
     const maiorId = produtos.reduce((max, p) => (p.id_prod > max ? p.id_prod : max), 0);
 
     const novoProduto = {

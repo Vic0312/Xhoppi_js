@@ -6,7 +6,7 @@
     "descricao": "Perfume Frutado",
     "valor": "105.00",
     "quantidade": 100,
-    "foto_prod": "perfumeEgeo.jfif"
+    "foto_prod": "egeo.png"
   },
   {
     "id_prod": 2,
@@ -15,7 +15,7 @@
     "descricao": "Sei não - arabe",
     "valor": "500.00",
     "quantidade": 200,
-    "foto_prod": "perfume_arabe.webp"
+    "foto_prod": "perfumeArabe.png"
   },
   {
     "id_prod": 3,
@@ -24,7 +24,7 @@
     "descricao": "Sei la",
     "valor": "115.00",
     "quantidade": 150,
-    "foto_prod": "nertamid.jpeg"
+    "foto_prod": "nertamid.png"
   },
   {
     "id_prod": 4,
@@ -34,5 +34,59 @@
     "valor": "200",
     "quantidade": 23,
     "foto_prod": "1789956821265-880806568.jpg"
+  },
+  {
+    "id_prod": 5,
+    "nome": "Colar",
+    "fabricante": "sla",
+    "descricao": "colar de esmeralda",
+    "valor": "50",
+    "quantidade": 20,
+    "foto_prod": "1789958753669-824876772.jfif"
+  },
+  {
+    "id_prod": 6,
+    "nome": "Joias",
+    "fabricante": "sla",
+    "descricao": "conjunto praia de joias",
+    "valor": "63",
+    "quantidade": 13,
+    "foto_prod": "1789958817584-737127580.png"
+  },
+  {
+    "id_prod": 7,
+    "nome": "Alianca top",
+    "fabricante": "sla",
+    "descricao": "Alianca linda",
+    "valor": "27",
+    "quantidade": 12,
+    "foto_prod": "1789958875546-976771469.jfif"
+  },
+  {
+    "id_prod": 8,
+    "nome": "Roupas marrons",
+    "fabricante": "sla",
+    "descricao": "Roupas",
+    "valor": "76",
+    "quantidade": 16,
+    "foto_prod": "1789958927755-380070522.jfif"
+  },
+  {
+    "id_prod": 9,
+    "nome": "Salto",
+    "fabricante": "sla",
+    "descricao": "Salto com brilho",
+    "valor": "97",
+    "quantidade": 24,
+    "foto_prod": "1789959153295-507699755.jpg"
+  },
+  {
+    "id_prod": 10,
+    "nome": "Bota",
+    "fabricante": "sla",
+    "descricao": "Bota branca",
+    "valor": "46",
+    "quantidade": 12,
+    "foto_prod": "1789959213972-43201914.jfif"
   }
 ]
