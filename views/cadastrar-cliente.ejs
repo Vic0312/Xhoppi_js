@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="icon" href="/img/logo.png" type="image/png">
+    <title>Xhopii - <%= cliente ? 'Editar' : 'Cadastro' %> Cliente</title>
+</head>
+<body>
+
+    <header>
+        <section id="cabecalho-logo">
+            <img src="/img/logo.png" alt="Logo">
+            <h1>Xhopii</h1>
+        </section>
+        <section id="cabecalho-logout">
+            <a href="/login">Sair</a>
+        </section>
+    </header>
+
+    <nav class="menu-horizontal">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/clientes/cadastrar">Cadastro Cliente</a></li>
+            <li><a href="/funcionario/cadastrar">Cadastro Funcionário</a></li>
+            <li><a href="/produto/cadastrar">Cadastro Produto</a></li>
+            <li><a href="/clientes/visualizar">Ver Clientes</a></li>
+            <li><a href="/funcionarios/visualizar">Ver Funcionários</a></li>
+            <li><a href="/produtos">Ver Produtos</a></li>
+        </ul>
+    </nav>
+
+    <section class="conteudo-cadastro">
+        <section class="conteudo-formulario-cadastro">
+            <form method="POST" action="/cliente/salvar" enctype="multipart/form-data">
+                <label><%= cliente ? 'Editar Cliente' : 'Cadastrar Cliente' %></label>
+                
+                <!-- Identificador para atualização -->
+                <input type="hidden" name="cpfOriginal" value="<%= cliente ? cliente.cpf : '' %>">
+
+                <input type="text" placeholder="Nome" name="nome" value="<%= cliente ? cliente.nome : '' %>" required>
+                <input type="text" placeholder="Sobrenome" name="sobrenome" value="<%= cliente ? cliente.sobrenome : '' %>" required>
+                <input type="text" placeholder="CPF" name="cpf" value="<%= cliente ? cliente.cpf : '' %>" required>
+                <input type="date" placeholder="Data Nascimento" name="dataNascimento" value="<%= cliente ? cliente.dataNasc : '' %>" required>
+                <input type="text" placeholder="Telefone" name="telefone" value="<%= cliente ? cliente.telefone : '' %>">
+                <input type="email" placeholder="Email" name="email" value="<%= cliente ? cliente.email : '' %>" required>
+                <input type="password" placeholder="Senha" name="senha" value="<%= cliente ? cliente.senha : '' %>" required>
+                
+                <label id="lbl-arquivo" for="files">Selecionar foto de perfil:</label>
+                <input type="file" name="inputFoto">
+                
+                <input id="botao" type="submit" value="<%= cliente ? 'Atualizar' : 'Cadastrar' %>">
+            </form>
+        </section>
+    </section>
+
+    <footer class="rodape">
+        <hr>
+        <p>© 2025 Xhopii. Todos os direitos acadêmicos reservados</p>
+    </footer>
+
+</body>
+</html>

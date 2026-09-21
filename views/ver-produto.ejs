@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="icon" href="/img/logo.png" type="image/png">
-    <title>Xhopii - Ver Clientes</title>
+    <title>Xhopii - Ver Produtos</title>
     <style>
-        .tabela-dados {
+        .tabela-produtos {
             width: 95%;
             margin: 20px auto;
             border-collapse: collapse;
             background: #fff;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .tabela-dados th, .tabela-dados td {
+        .tabela-produtos th, .tabela-produtos td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: center;
         }
-        .tabela-dados th {
+        .tabela-produtos th {
             background-color: #ee4d2d;
             color: white;
         }
-        .tabela-dados img {
+        .tabela-produtos img {
             width: 50px;
             height: 50px;
             object-fit: cover;
-            border-radius: 50%;
+            border-radius: 4px;
         }
         .btn-acao {
             padding: 6px 12px;
@@ -68,38 +68,40 @@
     <section class="conteudo-ver">
         <section class="conteudo-ver-descobertas">
             <section class="conteudo-ver-descobertas-titulo">
-                <h1>Gerenciamento de Clientes</h1>
+                <h1>Gerenciamento de Produtos</h1>
             </section>
             
-            <table class="tabela-dados">
+            <table class="tabela-produtos">
                 <thead>
                     <tr>
-                        <th>Foto</th>
-                        <th>CPF</th>
-                        <th>Nome Completo</th>
-                        <th>Data Nasc.</th>
-                        <th>Telefone</th>
-                        <th>E-mail</th>
+                        <th>Imagem</th>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Fabricante</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Estoque</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% if (clientes.length === 0) { %>
+                    <% if (produtos.length === 0) { %>
                         <tr>
-                            <td colspan="7">Nenhum cliente cadastrado.</td>
+                            <td colspan="8">Nenhum produto cadastrado.</td>
                         </tr>
                     <% } else { %>
-                        <% clientes.forEach(cliente => { %>
+                        <% produtos.forEach(produto => { %>
                             <tr>
-                                <td><img src="/imgcliente/<%= cliente.foto_perfil %>" alt="Foto"></td>
-                                <td><%= cliente.cpf %></td>
-                                <td><%= cliente.nome %> <%= cliente.sobrenome %></td>
-                                <td><%= cliente.dataNasc %></td>
-                                <td><%= cliente.telefone %></td>
-                                <td><%= cliente.email %></td>
+                                <td><img src="/imgprod/<%= produto.foto_prod %>" alt="Foto"></td>
+                                <td><%= produto.id_prod %></td>
+                                <td><%= produto.nome %></td>
+                                <td><%= produto.fabricante %></td>
+                                <td><%= produto.descricao %></td>
+                                <td>R$ <%= parseFloat(produto.valor).toFixed(2) %></td>
+                                <td><%= produto.quantidade %></td>
                                 <td>
-                                    <a href="/cliente/editar/<%= cliente.cpf %>" class="btn-acao btn-editar">Editar</a>
-                                    <a href="/cliente/deletar/<%= cliente.cpf %>" class="btn-acao btn-excluir" onclick="return confirm('Tem certeza que deseja excluir este cliente?')">Excluir</a>
+                                    <a href="/produto/editar/<%= produto.id_prod %>" class="btn-acao btn-editar">Editar</a>
+                                    <a href="/produto/deletar/<%= produto.id_prod %>" class="btn-acao btn-excluir" onclick="return confirm('Tem certeza que deseja excluir este produto?')">Excluir</a>
                                 </td>
                             </tr>
                         <% }); %>

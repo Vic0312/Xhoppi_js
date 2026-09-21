@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="icon" href="/img/logo.png" type="image/png">
+    <title>Xhopii - <%= produto ? 'Editar' : 'Cadastro' %> Produto</title>
+</head>
+<body>
+
+    <header>
+        <section id="cabecalho-logo">
+            <img src="/img/logo.png" alt="Logo">
+            <h1>Xhopii</h1>
+        </section>
+        <section id="cabecalho-logout">
+            <a href="/login">Sair</a>
+        </section>
+    </header>
+
+    <nav class="menu-horizontal">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/clientes/cadastrar">Cadastro Cliente</a></li>
+            <li><a href="/funcionario/cadastrar">Cadastro Funcionário</a></li>
+            <li><a href="/produto/cadastrar">Cadastro Produto</a></li>
+            <li><a href="/clientes/visualizar">Ver Clientes</a></li>
+            <li><a href="/funcionarios/visualizar">Ver Funcionários</a></li>
+            <li><a href="/produtos">Ver Produtos</a></li>
+        </ul>
+    </nav>
+
+    <section class="conteudo-cadastro">
+        <section class="conteudo-formulario-cadastro">
+            <form method="POST" action="/produto/salvar" enctype="multipart/form-data">
+                <label><%= produto ? 'Editar Produto' : 'Cadastrar Produto' %></label>
+                
+                <!-- Campo Oculto para ID caso seja Edição -->
+                <input type="hidden" name="id_prod" value="<%= produto ? produto.id_prod : '' %>">
+
+                <input type="text" placeholder="Nome" name="inputNomeProd" value="<%= produto ? produto.nome : '' %>" required>
+                <input type="text" placeholder="Fabricante" name="inputFabricanteProd" value="<%= produto ? produto.fabricante : '' %>">
+                <input type="text" placeholder="Descrição" name="inputDescricaoProd" value="<%= produto ? produto.descricao : '' %>">
+                <input type="text" placeholder="Valor" name="inputValorProd" value="<%= produto ? produto.valor : '' %>" required>
+                <input type="number" placeholder="Quantidade" name="inputQtdProd" value="<%= produto ? produto.quantidade : '' %>" required>
+                
+                <label id="lbl-arquivo" for="files">Selecionar foto do produto:</label>
+                <input type="file" name="inputFoto">
+                
+                <input id="botao" type="submit" value="<%= produto ? 'Atualizar' : 'Cadastrar' %>">
+            </form>
+        </section>
+    </section>
+
+    <footer class="rodape">
+        <hr>
+        <p>© 2025 Xhopii. Todos os direitos acadêmicos reservados</p>
+    </footer>
+
+</body>
+</html>

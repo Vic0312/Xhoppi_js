@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="icon" href="/img/logo.png" type="image/png">
-    <title>Xhopii - Ver Clientes</title>
+    <title>Xhopii - Ver Funcionários</title>
     <style>
         .tabela-dados {
             width: 95%;
@@ -68,7 +68,7 @@
     <section class="conteudo-ver">
         <section class="conteudo-ver-descobertas">
             <section class="conteudo-ver-descobertas-titulo">
-                <h1>Gerenciamento de Clientes</h1>
+                <h1>Gerenciamento de Funcionários</h1>
             </section>
             
             <table class="tabela-dados">
@@ -77,29 +77,29 @@
                         <th>Foto</th>
                         <th>CPF</th>
                         <th>Nome Completo</th>
-                        <th>Data Nasc.</th>
-                        <th>Telefone</th>
+                        <th>Cargo</th>
+                        <th>Salário</th>
                         <th>E-mail</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% if (clientes.length === 0) { %>
+                    <% if (funcionarios.length === 0) { %>
                         <tr>
-                            <td colspan="7">Nenhum cliente cadastrado.</td>
+                            <td colspan="7">Nenhum funcionário cadastrado.</td>
                         </tr>
                     <% } else { %>
-                        <% clientes.forEach(cliente => { %>
+                        <% funcionarios.forEach(func => { %>
                             <tr>
-                                <td><img src="/imgcliente/<%= cliente.foto_perfil %>" alt="Foto"></td>
-                                <td><%= cliente.cpf %></td>
-                                <td><%= cliente.nome %> <%= cliente.sobrenome %></td>
-                                <td><%= cliente.dataNasc %></td>
-                                <td><%= cliente.telefone %></td>
-                                <td><%= cliente.email %></td>
+                                <td><img src="/imgfunc/<%= func.foto_perfil %>" alt="Foto"></td>
+                                <td><%= func.cpf %></td>
+                                <td><%= func.nome %> <%= func.sobrenome %></td>
+                                <td><%= func.cargo %></td>
+                                <td>R$ <%= parseFloat(func.salario).toFixed(2) %></td>
+                                <td><%= func.email %></td>
                                 <td>
-                                    <a href="/cliente/editar/<%= cliente.cpf %>" class="btn-acao btn-editar">Editar</a>
-                                    <a href="/cliente/deletar/<%= cliente.cpf %>" class="btn-acao btn-excluir" onclick="return confirm('Tem certeza que deseja excluir este cliente?')">Excluir</a>
+                                    <a href="/funcionario/editar/<%= func.cpf %>" class="btn-acao btn-editar">Editar</a>
+                                    <a href="/funcionario/deletar/<%= func.cpf %>" class="btn-acao btn-excluir" onclick="return confirm('Tem certeza que deseja excluir este funcionário?')">Excluir</a>
                                 </td>
                             </tr>
                         <% }); %>
