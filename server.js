@@ -35,7 +35,7 @@ const port = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Registrando Middlewares Globais[cite: 16]
+// Registra Middlewares Globais
 app.use(staticMiddleware);
 app.use(urlencodedMiddleware);
 app.use(jsonMiddleware);
@@ -44,14 +44,14 @@ app.use(compressionMiddleware);
 app.use(rateLimitMiddleware);
 app.use(morganMiddleware);
 
-// Registrando as Rotas
+// Registra as Rotas
 app.use('/', authRoutes);
 app.use('/', homeRoutes);
 app.use('/', produtoRoutes);
 app.use('/', clienteRoutes);
 app.use('/', funcionarioRoutes);
 
-// Inicializando o Servidor[cite: 16]
+// Inicializa o Servidor
 app.listen(port, () => {
     console.log(`Servidor ativo rodando na porta ${port}`);
 });
