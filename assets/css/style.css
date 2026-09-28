@@ -393,20 +393,22 @@ body{
 
 /* ========= INICIO CONTEUDO CADASTRO ========== */
 
-.conteudo-cadastro{
+.conteudo-cadastro {
     width: 100%;
     background-color: rgb(195, 195, 195);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 40px;    /* Espaço em relação ao menu */
+    padding-bottom: 40px; /* Espaço em relação ao rodapé */
 }
 
-.conteudo-cadastro .conteudo-formulario-cadastro{
+.conteudo-cadastro .conteudo-formulario-cadastro {
     width: 40%;
     background-color: rgb(255,255,255);
     border-radius: 5px;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    padding: 20px 0;      /* Espaçamento interno */
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,.14);
 }
 
 .conteudo-cadastro .conteudo-formulario-cadastro p{
@@ -479,16 +481,21 @@ input[type=file]::file-selector-button:hover {
 
 /* ========= INICIO CONTEUDO VER PRODUTO ========== */
 
-.conteudo-ver{
+.conteudo-ver {
     width: 100%;
     background-color: rgb(195, 195, 195);
+    padding-top: 40px;    /* Afasta o topo da tabela do menu */
+    padding-bottom: 40px; /* Afasta o fundo da tabela do rodapé */
 }
 
-.conteudo-ver .conteudo-ver-descobertas{
+.conteudo-ver .conteudo-ver-descobertas {
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;  
     background-color: rgb(255,255,255);
+    border-radius: 5px;
+    padding-bottom: 20px; /* Espaço para não colar na tabela */
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,.14);
 }
 
 .conteudo-ver .conteudo-ver-descobertas .conteudo-ver-descobertas-titulo{
@@ -597,125 +604,68 @@ input[type=file]::file-selector-button:hover {
 }
 /* ========= FIM CONTEUDO VER PRODUTO ========== */
 
-.conteudo-visualizar{
+
+/* Espaçamento das telas de Cadastro para não colar no menu e rodapé */
+.conteudo-cadastro {
+    width: 100%;
+    min-height: 80vh;
+    background-color: rgb(195, 195, 195);
+    display: flex;
+    flex-direction: row;        /* Garante alinhamento lado a lado */
+    justify-content: center;   /* Centraliza horizontalmente */
+    align-items: center;       /* Centraliza verticalmente */
+    padding: 40px 0;           /* Descola do menu e do rodapé */
+}
+
+/* Caixa do formulário */
+.conteudo-cadastro .conteudo-formulario-cadastro {
+    width: 450px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Espaçamento das telas de Visualização (Tabelas) */
+.conteudo-ver {
     width: 100%;
     background-color: rgb(195, 195, 195);
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
-.conteudo-visualizar .conteudo-visualizar-box{
+.conteudo-ver .conteudo-ver-descobertas {
     width: 80%;
     margin-left: 10%;
-    background-color: rgb(240,240,240);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.conteudo-visualizar .conteudo-visualizar-box h1{
-    color: rgb(251,86,48);
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 25px;
-    margin-top: 50px;
-    margin-bottom: 25px;
-}
-
-.conteudo-visualizar .conteudo-visualizar-box .conteudo-bloco{
-    width: 60%;
-    background-color: rgb(255, 255, 255);
+    margin-right: 10%;  
+    background-color: rgb(255,255,255);
     border-radius: 5px;
-    margin-top: 10px;
+    padding-bottom: 20px;
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,.14);
+}
+
+.imgpg {
+    display: inline-block;
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
     margin-bottom: 10px;
 }
 
-.conteudo-visualizar .conteudo-visualizar-box .conteudo-bloco h2{
-    color: rgb(251,86,48);
-    font-weight: bold;
-}
-
-.rodape{
-    width: 80%;
-    height: 400px;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-.rodape .conteudo-rodape-info{
-    width: 100%;
-    height: 300px;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+/* Alinha o ícone e o texto da rede social lado a lado na mesma linha */
+.p-rdp {
     display: flex;
-    justify-content: center;
     align-items: center;
+    font-size: 14px;
+    color: rgb(120, 120, 120);
+    margin: 8px 0;
 }
 
-.rodape .conteudo-rodape-info .conteudo-rodape{
-    width: 20%;
-    height: 250px;
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
 }
-
-.rodape .conteudo-rodape-info .conteudo-rodape h5{
-    text-transform: uppercase;
-    color: rgba(0,0,0,.87);
-    margin-bottom: 1.5rem;
-}
-
-.rodape .conteudo-rodape-info .conteudo-rodape a{
-    color: rgba(0,0,0,.65);
-    text-decoration: none;
-    font-size: .75rem;
-    margin-bottom: 0.65rem;
-}
-
-.rodape .conteudo-rodape-info .conteudo-rodape a:hover{
-    color: rgb(251, 119, 48);
-}
-
-.rodape .conteudo-rodape-info .conteudo-rodape .conteudo-rodape-pagamento{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-flow: row wrap;
-}
-
-.rodape .conteudo-rodape-info .conteudo-rodape .conteudo-rodape-pagamento #img-pagamento{
-    background-color: rgb(255,255,255);
-    border-radius: 0.2em;
-    margin-right: 0.75em;
-    margin-bottom: 0.75em;
-}
-
-.rodape .conteudo-rodape-info .conteudo-rodape #img-sociais{
-    width: 1.5em;
-    height: 1.5em;
-    margin-right: 0.75em;
-}
-
-.rodape .conteudo-rodape-info .conteudo-rodape #img-store{
-    background-color: rgb(255,255,255);
-    margin-bottom: 1.5em;
-}
-
-.rodape hr{
-    color: rgba(0,0,0,.09);
-}
-
-.rodape p{
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: rgba(0,0,0,.87);
-}
-
 /* ========= FIM LOGIN ========== */
 
 header{

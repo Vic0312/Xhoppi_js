@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/css/rodape.css">
+    <link rel="icon" href="/img/logo.png" type="image/png">
+    <title>Xhopii - Criar Conta de Funcionário</title>
+</head>
+<body>
+
+    <header class="cabecalho-login">
+        <section id="cabecalho-login-logo">
+            <img src="/img/logo.png" alt="Logo Xhopii">
+            <h1>Xhopii</h1>
+            <p>Cadastro de Funcionário</p>
+        </section>
+        <section id="cabecalho-login-ajuda">
+            <p>Precisa de ajuda?</p>
+        </section>
+    </header>
+
+    <section class="conteudo-cadastro">
+        <section class="conteudo-formulario-cadastro">
+            <form method="POST" action="/funcionario/cadastrar-publico" enctype="multipart/form-data">
+                <label>Criar Conta de Funcionário</label>
+
+                <input type="text" placeholder="Nome" name="inputNomeFunc" required>
+                <input type="text" placeholder="Sobrenome" name="inputSobrenomeFunc" required>
+                <input type="text" placeholder="CPF" name="inputCPFFunc" required>
+                <input type="date" placeholder="Data Nascimento" name="inputDataNascFunc" required>
+                <input type="text" placeholder="Telefone" name="inputTelefoneFunc">
+                <input type="text" placeholder="Cargo / Função" name="inputCargoFunc">
+                <input type="text" placeholder="Salário" name="inputSalarioFunc">
+                <input type="email" placeholder="Email" name="inputEmailFunc" required>
+                <input type="password" placeholder="Senha" name="inputSenha" required>
+                
+                <label id="lbl-arquivo" for="inputFoto">Selecionar foto de perfil:</label>
+                <input type="file" id="inputFoto" name="inputFoto">
+                
+                <input id="botao" type="submit" value="CADASTRAR E LOGAR">
+            </form>
+
+            <p style="text-align: center; margin-top: 15px;">
+                Já tem uma conta? <a href="/login" style="color: #ee4d2d; font-weight: bold;">Fazer Login</a>
+            </p>
+        </section>
+    </section>
+
+    <footer class="rodape">
+        <div class="container-footer">
+            <section>
+                <h1 class="h1-rdp">Atendimento ao cliente</h1>
+                <p class="p-rdp">Central de Ajuda</p>
+                <p class="p-rdp">Como Comprar</p>
+                <p class="p-rdp">Métodos de Pagamento</p>
+                <p class="p-rdp">Garantia Xhopii</p>
+                <p class="p-rdp">Devolução e Reembolso</p>
+                <p class="p-rdp">Fale Conosco</p>
+                <p class="p-rdp">Ouvidoria</p>
+                <p class="p-rdp">Preferências de cookies</p>
+            </section>
+
+            <section>
+                <h1 class="h1-rdp">Sobre a Xhopii</h1>
+                <p class="p-rdp">Sobre Nós</p>
+                <p class="p-rdp">Políticas Xhopii</p>
+                <p class="p-rdp">Política de Privacidade</p>
+                <p class="p-rdp">Programa de Afiliados da Xhopii</p>
+                <p class="p-rdp">Seja um Entregador Xhopii</p>
+                <p class="p-rdp">Ofertas Relâmpago</p>
+                <p class="p-rdp">Xhopii Blog</p>
+                <p class="p-rdp">Imprensa</p>
+            </section>
+
+            <section>
+                <h1 class="h1-rdp">Pagamento</h1>
+                <img class="imgpg" src="/img/logo-visa.png" alt="Visa">
+                <img class="imgpg" src="/img/logo-mastercard.png" alt="Mastercard">
+                <img class="imgpg" src="/img/logo-pix.png" alt="Pix">
+            </section>
+
+            <section>
+                <h1 class="h1-rdp">Siga-nos</h1>
+                <p class="p-rdp"><img class="icon" src="/img/logo-instagram.png" alt="Instagram">Instagram</p>
+                <p class="p-rdp"><img class="icon" src="/img/logo-tiktok.png" alt="TikTok">TikTok</p>
+                <p class="p-rdp"><img class="icon" src="/img/logo-facebook.png" alt="Facebook">Facebook</p>
+            </section>
+
+            <section>
+                <h1 class="h1-rdp">Atendimento ao cliente</h1>
+                <img class="qr" src="/img/qr-code.png" alt="QR Code"><br>
+                <img class="stre" src="/img/logo-store-apple.png" alt="App Store"><br>
+                <img class="stre" src="/img/logo-google-play.png" alt="Google Play">
+            </section>
+
+            <hr id="hr-rdp">
+        </div>
+        <p class="p-rdp" style="text-align: center; margin-bottom: 20px;">© 2025 Xhopii. Todos os direitos acadêmicos reservados</p>
+    </footer>
+
+</body>
+</html>
